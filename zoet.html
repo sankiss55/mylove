@@ -8,12 +8,15 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); /* Gradiente suave */
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             font-family: 'Arial', sans-serif;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
         }
 
         .heart {
@@ -31,84 +34,83 @@
         }
 
         .message {
-            pointer-events: none;
-            text-align: center;
-            display: none; /* Oculto inicialmente */
-            background: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
-            padding: 30px;
+            display: none;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            max-width: 60%;
             width: 90%;
-            opacity: 0; /* Inicialmente invisible */
-            transform: translateY(20px); /* Desplazamiento inicial */
-            transition: opacity 1s ease, transform 1s ease; /* Transición suave */
+            max-width: 400px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+            z-index: 10;
         }
 
         .message.show {
-            opacity: 1; /* Visible */
-            transform: translateY(0); /* Sin desplazamiento */
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .message img.foto {
-            width: 300px;
-            height: 180px;
-border-radius: 10px;
-            margin: 10px;
-            border: 3px solid #ff6f61; /* Borde de color */
-            transition: transform 0.3s ease; /* Transición para la foto */
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px auto;
+            border: 3px solid #ff6f61;
+            transition: transform 0.3s ease;
         }
 
         .message img.foto:hover {
-            transform: scale(1.1); /* Efecto de escala al pasar el mouse */
+            transform: scale(1.1);
         }
 
         .message p {
-            font-size: 24px;
+            font-size: 20px;
             color: #333;
-            margin-top: 20px;
-            line-height: 1.6;
-            font-family: 'Georgia', serif; /* Tipografía más elegante */
+            margin-top: 15px;
+            line-height: 1.5;
+            font-family: 'Georgia', serif;
             font-weight: bold;
-            opacity: 0; /* Inicialmente invisible */
-            transform: translateY(20px); /* Desplazamiento inicial */
-            transition: opacity 1s ease 0.5s, transform 1s ease 0.5s; /* Transición con retraso */
-        }
-
-        .message.show p {
-            opacity: 1; /* Visible */
-            transform: translateY(0); /* Sin desplazamiento */
         }
 
         .message p span {
-            color: #ff6f61; /* Color destacado */
+            color: #ff6f61;
         }
 
         .osito {
-            margin-top: 20px;
-            width: 150px; /* Tamaño del osito */
+            margin-top: 10px;
+            width: 120px;
             height: auto;
+        }
+
+        /* Responsividad */
+        @media (max-width: 480px) {
+            .message {
+                padding: 15px;
+                max-width: 300px;
+            }
+            .message p {
+                font-size: 18px;
+            }
+            .message img.foto {
+                max-width: 200px;
+            }
+            .osito {
+                width: 100px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="message">
-        <!-- Foto de los dos -->
         <img class="foto" src="./mil.jpg" alt="Nuestra foto">
-        <!-- Mensaje especial -->
-        <p>Eres lo más bonito que me ha pasado. <span>¡Te amo! ❤️</span></p>
-        <!-- Osito mandando besos -->
-        <div style="display: flex; justify-content: center; align-items: center; height: 40vh;">
-            <div style="width: 300px; height: auto;">
-              <div class="tenor-gif-embed" data-postid="14285236" data-share-method="host" data-aspect-ratio="1.3806" data-width="100%">
-                <a href="https://tenor.com/view/love-you-brown-bear-hearts-blow-kiss-gif-14285236">Love You Brown Bear GIF</a>
-              </div>
-              <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-            </div>
-          </div>
+        <p>Eres lo más bonito que me ha pasado. <span>¡TQM! Zoet ❤️</span></p>
+        <div class="tenor-gif-embed" data-postid="14285236" data-share-method="host" data-aspect-ratio="1.3806" data-width="100%"><a href="https://tenor.com/view/love-you-brown-bear-hearts-blow-kiss-gif-14285236">Love You Brown Bear GIF</a>from <a href="https://tenor.com/search/love+you-gifs">Love You GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
     </div>
+
     <script>
-        // Función para crear corazones
         function createHeart() {
             const heart = document.createElement('div');
             heart.innerHTML = '❤️';
@@ -118,6 +120,9 @@ border-radius: 10px;
             document.body.appendChild(heart);
 
             // Remueve el corazón después de 5 segundos
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
         }
 
         // Mostrar corazones durante 3 segundos
