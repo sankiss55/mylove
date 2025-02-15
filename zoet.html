@@ -34,6 +34,7 @@
         }
 
         .message {
+            pointer-events: none;
             display: none;
             background: rgba(255, 255, 255, 0.9);
             padding: 20px;
@@ -119,10 +120,7 @@
             heart.style.animationDuration = Math.random() * 3 + 2 + 's';
             document.body.appendChild(heart);
 
-            // Remueve el corazón después de 5 segundos
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
+           
         }
 
         // Mostrar corazones durante 3 segundos
