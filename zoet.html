@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensaje Especial</title>
+    <title>Zoet my love</title>
     <style>
         body {
             margin: 0;
@@ -86,7 +86,7 @@
             height: auto;
         }
 
-        /* Responsividad */
+        
         @media (max-width: 480px) {
             .message {
                 padding: 15px;
@@ -123,18 +123,18 @@
            
         }
 
-        // Mostrar corazones durante 3 segundos
+    
         const heartInterval = setInterval(createHeart, 300);
 
-        // Detener corazones después de 3 segundos y mostrar el mensaje con animación
+
         setTimeout(() => {
-            clearInterval(heartInterval); // Detiene la creación de corazones
+            clearInterval(heartInterval); 
             const message = document.querySelector('.message');
-            message.style.display = 'block'; // Muestra el contenedor
+            message.style.display = 'block'; 
             setTimeout(() => {
-                message.classList.add('show'); // Aplica la animación de aparición
-            }, 10); // Pequeño retraso para activar la transición
-        }, 3000); // 3 segundos
+                message.classList.add('show'); 
+            }, 10); 
+        }, 3000); 
     </script>
 </body>
 </html>
